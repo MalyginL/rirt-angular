@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import 'assets/css/app.min.scss';
+@import 'assets/css/material-design-iconic-font.min.scss';
+@import 'variables';
+@import '../node_modules/font-awesome/scss/font-awesome';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+$ionicons-font-path: "../node_modules/ionicons/dist/fonts";
+
+@import "~ionicons/dist/scss/ionicons";
+body{
+  transition: background .3s;
+  background-image: url("assets/img/2.jpg");
+ // background-color: #141a29;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}

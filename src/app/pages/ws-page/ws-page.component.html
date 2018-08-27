@@ -1,0 +1,30 @@
+<header class="content__title">
+  <h1>Настройка</h1>
+</header>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <form (ngSubmit)="Send()">
+          <div class="form-group">
+              <input type="text" class="form-control text-center" placeholder="message" [(ngModel)]="ws.message" name="message" id="message">
+          </div>
+          
+          <button type="submit"  class="btn btn btn-outline-info btn-block" >Send</button>
+      </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Buttons</h4>
+        <button type="button" class="btn btn btn-outline-info btn-block" (click)="connect()">Connect</button>
+        <button type="button"  class="btn btn btn-outline-info btn-block" (click)="change()">Send</button>
+        <button type="button"  class="btn btn btn-outline-info btn-block" (click)="change()">Disconnect</button>
+      </div>
+    </div>
+  </div>
+</div>
+

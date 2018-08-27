@@ -1,0 +1,44 @@
+    <header class="content__title">
+      <h1>Управление заданиями</h1>
+    </header>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <h6>Выберите канал</h6>
+            <ng-selector-channel class="select2"></ng-selector-channel>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <new-task></new-task>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <current-table></current-table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <smoothed-chart [data]=graphDataSource></smoothed-chart>
+            <!--<line-chart [data]="data"></line-chart>-->
+          </div>
+        </div>
+      </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+      <skdo-chart></skdo-chart>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <completed-table></completed-table>
+    </div>
