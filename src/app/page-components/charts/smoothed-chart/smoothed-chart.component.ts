@@ -18,6 +18,7 @@ export class SmoothedChartComponent implements OnChanges {
     
     this.chart = this.AmCharts.makeChart('smoothed', 
     {
+      'pathToImages': 'assets/images/',
       'type': 'serial',
       'categoryField': 'time',
       'dataDateFormat': 'YYYY-MM-DD HH:NN:SS',
