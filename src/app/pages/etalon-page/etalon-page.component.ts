@@ -21,8 +21,6 @@ export class EtalonPageComponent implements OnInit, OnDestroy {
     this.load.load_home_graph().subscribe(data => {
       this.graphDataSource = data;
       const datePipe= new DatePipe('en-US');
-
-
       this.graphDataSource.forEach(element => {
         element.time=datePipe.transform(element.time*1000, 'yyyy-MM-dd HH:mm:ss');
       });

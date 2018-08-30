@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import 'rxjs/Rx';
 import {RepoService} from './repo.service';
+import { Observable } from 'rxjs/Rx';
+
 
 
 @Injectable()
@@ -61,4 +63,12 @@ export class LoadService {
   load_old_task() {
     return this.load('/malygin/oldtasks');
   }
+
+
+  /*    NEW      API */
+
+  load_task_graph(device,channel,time){
+    return this.load('/malygin/getData/'+device+'/'+channel+'/'+time);
+  }
+
 }
