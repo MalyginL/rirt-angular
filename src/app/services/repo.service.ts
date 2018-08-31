@@ -16,6 +16,10 @@ export class RepoService {
   access_token: any;
   refresh_token: any;
   task_graph: any;
+  info_pd:any;
+  info_rel_freq_diff:any;
+  info_curr_var_rel_freq_diff:any;
+
 
   constructor() {
     this.access_token = localStorage.getItem('access_token');

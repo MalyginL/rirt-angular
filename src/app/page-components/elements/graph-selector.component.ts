@@ -7,7 +7,7 @@ import {Task} from '../../models/task';
 
 
 @Component({
-  selector: 'new-task',
+  selector: 'graph-selector',
   template: `
     <h6>Создание заданий</h6>
    <form [formGroup]="tasks" (ngSubmit)="save(tasks)">
@@ -35,7 +35,7 @@ import {Task} from '../../models/task';
 })
 
 
-export class NewTaskComponent implements OnInit {
+export class GraphSelectorComponent implements OnInit {
   options = {
     year: 'numeric',
     month: 'long',
@@ -69,8 +69,8 @@ export class NewTaskComponent implements OnInit {
   save(tasks) {
     if (tasks.value.time && tasks.value.task.name) {
       this.task.channel = this.repo.task_selected_channel;
-      this.task.time = tasks.value.time[0] +
-        '  ~  ' + tasks.value.time[1];
+      this.task.time = tasks.value.time[0].toLocaleString('ru-RU', this.options) +
+        '  ~  ' + tasks.value.time[1].toLocaleString('ru-RU', this.options);
       this.task.task = tasks.value.task.name;
       this.send.addnewtask(this.task);
     }

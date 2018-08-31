@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges} from '@angular/core';
 import {AmChartsService} from '@amcharts/amcharts3-angular';
 import { DatePipe } from '../../../../../node_modules/@angular/common';
+import {ChartData} from '../../../models/ChartData';
 
 
 @Component({
@@ -8,17 +9,21 @@ import { DatePipe } from '../../../../../node_modules/@angular/common';
   templateUrl: './smoothed-chart.component.html',
   styleUrls: ['./smoothed-chart.component.scss']
 })
-export class SmoothedChartComponent implements OnChanges {
+export class SmoothedChartComponent implements OnChanges,OnInit {
   private chart: any;
   @Input() data: any;
+  @Input() name: any;
+ 
+  ngOnInit() {    
+  }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes.data.currentValue);
-    this.chart = this.AmCharts.makeChart('smoothed', 
+    this.chart = this.AmCharts.makeChart(this.name, 
     {
       'pathToImages': 'assets/images/',
       'type': 'serial',
-      'categoryField': 'time',
+      'categoryField': 'y',
+      
       'dataDateFormat': 'YYYY-MM-DD HH:NN:SS',
       'color':'red',
       'categoryAxis': {
@@ -39,7 +44,7 @@ export class SmoothedChartComponent implements OnChanges {
           'bullet': 'round',
           'id': 'AmGraph-1',
           'title': 'graph 1',
-          'valueField': 'rawData'
+          'valueField': 'x'
         },
       ],
       'guides': [],

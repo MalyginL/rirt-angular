@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import 'rxjs/Rx';
 import {RepoService} from './repo.service';
+import {graphAsk} from '../models/graphAsk';
 
 
 @Injectable()
@@ -43,4 +44,14 @@ export class SendService {
     console.log(id);
     this.send('/malygin/removetask/' + id, this.repo.settings_main).subscribe(datasource => this.repo.tasks_tasks = datasource);
   }
+
+  /*----------------------new ---------------------- */
+  /*getGraphsPerChannel(graphAsk :graphAsk,type:string) {
+    console.log(graphAsk);
+    this.send('/malygin/getGraphsPerChannel/' + graphAsk.device, this.repo.settings_main).subscribe(datasource => this.repo.tasks_tasks = datasource);
+  }
+*/
+
+
+
 }

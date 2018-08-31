@@ -67,8 +67,9 @@ export class LoadService {
 
   /*    NEW      API */
 
-  load_task_graph(device,channel,time){
-    return this.load('/malygin/getData/'+device+'/'+channel+'/'+time);
+  load_GraphsPerChannel(device,channel,time,type){
+    console.log(time);
+    return this.load('/malygin/getGraphsPerChannel/'+device+'/'+channel+'/'+time+type);
   }
 
 }

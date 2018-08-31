@@ -3,6 +3,8 @@ import {AmChartsService} from '@amcharts/amcharts3-angular';
 import {RepoService} from '../../services/repo.service';
 import {LoadService} from '../../services/load.service';
 import {Task_graph_data} from '../../models/task_page/Task_graph_data';
+import {DatePipe} from'@angular/common';
+import {ChartData} from '../../models/chartData'
 
 
 @Component({
@@ -14,35 +16,33 @@ export class TaskPageComponent implements OnInit, OnDestroy {
 
   timer: any;
   graphDataSource: any;
-  time:String[]= [];
-  phase_diff:String[]= [];
-  rel_freq_diff:String[]= [];
-  curr_var_rel_freq_diff:String[]= [];
-  
+  name_phase_diff:string="phase_diff"
+  name_rel_freq_diff:string="rel_freq_diff"
+  name_curr_var_rel_freq_diff:string="curr_var_rel_freq_diff"
 
   get data() {
     return this.repo.task_graph;
   }
 
+  get phase_diff(){
+    return this.repo.info_pd;
+  }
+
+  get rel_freq_diff(){
+    return this.repo.info_rel_freq_diff;
+  }
+
+  get curr_var_rel_freq_diff(){
+    return this.repo.info_curr_var_rel_freq_diff;
+  }
+
   constructor(private AmCharts: AmChartsService, private repo: RepoService, private load: LoadService) {
   }
 
+ 
 
 
   getDataSource() {
-   
-    this.load.load_task_graph(1,1,'1~5').subscribe(data=>{
-      (<Task_graph_data>data).graphCombo.forEach(x=>{
-        this.time.push(x.time);
-        this.phase_diff.push(x.phase_diff);
-        this.rel_freq_diff.push(x.rel_freq_diff);
-        this.curr_var_rel_freq_diff.push(x.curr_var_rel_freq_diff);
-      })
-     console.log( this.curr_var_rel_freq_diff);
-
-
-      });
-
     this.load.load_task().subscribe(data => this.repo.tasks_tasks = data);
 
     this.load.load_old_task().subscribe(data => this.repo.tasks_oldtasks = data);
@@ -50,7 +50,7 @@ export class TaskPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getDataSource();
-    this.timer = setInterval(() => this.getDataSource(), 5000);
+    //this.timer = setInterval(() => this.getDataSource(), 5000);
   }
 
   ngOnDestroy() {

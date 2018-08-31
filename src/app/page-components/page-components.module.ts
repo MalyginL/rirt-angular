@@ -16,6 +16,8 @@ import {AdvancedSettingsComponent} from './elements/advanced-settings.component'
 import {CompletedTaskComponent} from './elements/completed-task.component';
 import {SkdoChartComponent} from './charts/work-chart/skdo-chart.component';
 import {GraphTableComponent} from './elements/graph-table.component';
+import { NgSelectorDeviceComponent } from './elements/ng-selector-device.component';
+import {GraphSelectorComponent} from './elements/graph-selector.component'
 
 
 @NgModule({
@@ -26,8 +28,10 @@ import {GraphTableComponent} from './elements/graph-table.component';
     NgSelectModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    
   ],
   declarations: [
+    NgSelectorDeviceComponent,
     LineChartComponent,
     NgSelectorChannelComponent,
     ShortBlockComponent,
@@ -41,8 +45,10 @@ import {GraphTableComponent} from './elements/graph-table.component';
     GraphTableComponent,
     CompletedTaskComponent,
     SkdoChartComponent,
+    GraphSelectorComponent,
   ],
   exports: [
+    NgSelectorDeviceComponent,
     LineChartComponent,
     GraphTableComponent,
     NgSelectorChannelComponent,
@@ -55,7 +61,8 @@ import {GraphTableComponent} from './elements/graph-table.component';
     CurrentTasksComponent,
     AdvancedSettingsComponent,
     CompletedTaskComponent,
-    SkdoChartComponent
+    SkdoChartComponent,
+    GraphSelectorComponent
   ],
 })
 export class PageComponentsModule {
