@@ -12,14 +12,13 @@ import { LoadService } from '../../services/load.service';
         <h4 class="card-title">Данные графика</h4>
         <table class="table table-bordered mb-0">
           <thead>
-          <th>Значение X</th>
-          <th>Значение Y</th>
+          <th>Ось Ординат</th>
+          <th>Ось Абсцисс</th>
           <tbody>
           <tr *ngFor="let box of data">
-              <td>{{box.time}}</td>
-              <td>{{box.rawData}}</td>
+              <td>{{box.x}}</td>
+              <td>{{box.y}}</td>
             </tr>
-         
           </tbody>
         </table>
       </div>
@@ -36,10 +35,10 @@ export class GraphTableComponent implements OnInit {
 
 
   ngOnInit() {
+    /*
     this.load.load_home_graph().subscribe(data => {
       this.data = data;
-    });
-    //this.timer = setInterval(() => console.log(this.data),10000);
+    });*/
   }
 
 }

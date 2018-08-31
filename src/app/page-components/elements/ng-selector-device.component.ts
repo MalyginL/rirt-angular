@@ -16,25 +16,34 @@ import {
   import {RepoService} from '../../services/repo.service';
   import {LoadService} from '../../services/load.service';
   import {graphAsk} from '../../models/graphAsk';
+import { TryCatchStmt } from '../../../../node_modules/@angular/compiler';
   
   
   @Component({
     selector: 'ng-selector-device',
     template: `
-    <form [formGroup]="graphAsk" (ngSubmit)="save(graphAsk)">
- 
-        <ng-select [items]=""
+    <div class="row">
+    <form [formGroup]="graphAsk" (ngSubmit)="save(graphAsk)" class="col-lg-12">
+    <div class="col-lg-3">
+    <div class="card">
+    <div class="card-body">
+        <ng-select [items]="devices"
                    [(ngModel)]="selectedDevice"
                    [selectOnTab]="true"
-                   bindValue="device"
-                   bindLabel="device"
+                   bindValue="devices"
+                   bindLabel="devices"
                    [clearable]="false"
-                   (ngModelChange)="confirmDevice()"
+                   (ngModelChange)="confirmDevice($event)"
                    placeholder="Choose device"
                    formControlName="device">
         </ng-select>
-  
-      <ng-select [items]=""
+        </div>
+        </div>
+        </div>
+  <div class="col-lg-6">
+  <div class="card">
+  <div class="card-body">
+      <ng-select [items]="channels"
                  [(ngModel)]="selectedChannel"
                  [selectOnTab]="true"
                  bindValue="channel"
@@ -44,9 +53,13 @@ import {
                  placeholder="Choose channel"
                  formControlName="channel">
       </ng-select>
-     
+     </div>
+     </div>
+     </div>
 
-     
+     <div class="col-lg-6">
+     <div class="card">
+     <div class="card-body">
       <input [owlDateTimeTrigger]="dt1"
              [owlDateTime]="dt1"
              [selectMode]="'range'"
@@ -54,10 +67,19 @@ import {
              class="form-control"
              placeholder="Выберите время">
       <owl-date-time #dt1></owl-date-time>
-      <br>
-      
+      </div>
+      </div>
+      </div>
+     
+      <div class="col-lg-3">
+      <div class="card">
+      <div class="card-body">
       <button type="submit" class="btn btn-outline-success btn-block">Показать</button>
+      </div>
+      </div>
+      </div>
     </form>
+    </div>
     `
   })
   
@@ -73,9 +95,10 @@ import {
     second: 'numeric'
   };
 
-
+    devices:any;
+    channels:any;
     graphAsk: FormGroup;
-    selectedDevice: any = 1;
+    selectedDevice:any = 1;
     selectedChannel: any = 1;
     send: graphAsk = new graphAsk;
 
@@ -83,7 +106,7 @@ import {
     }
   
     ngOnInit() {
-      this.load.load_settings_main().subscribe(settings => this.repo.settings_main = settings);
+     this.load.load_devices().subscribe(data=>this.devices=data)
       this.graphAsk = this._fb.group({
         device: ['', [Validators.required]],
         channel: ['', [Validators.required]],
@@ -92,7 +115,10 @@ import {
     }
   
     confirmDevice(){
-
+      if (!this.selectedDevice){
+        console.log(this.selectedDevice);
+        this.load.load_channels(this.selectedDevice).subscribe(data=>this.channels=data);
+      }
     }
 
 

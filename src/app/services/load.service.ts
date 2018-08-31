@@ -64,12 +64,20 @@ export class LoadService {
     return this.load('/malygin/oldtasks');
   }
 
+ 
+
 
   /*    NEW      API */
 
   load_GraphsPerChannel(device,channel,time,type){
-    console.log(time);
+    
     return this.load('/malygin/getGraphsPerChannel/'+device+'/'+channel+'/'+time+type);
   }
+  load_devices() {
+    return this.load('/malygin/devices');
+  }
 
+  load_channels( device) {
+    return this.load('/malygin/channels/'+device);
+  }
 }

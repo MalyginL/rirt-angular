@@ -53,6 +53,15 @@ export class SmoothedChartComponent implements OnChanges,OnInit {
           'id': 'ValueAxis-1',
         }
       ],
+      'export':{
+        'enabled':true,
+        'menu':[
+          {
+            'class':'export-main',
+            'format':'PRINT'
+          }
+        ]
+      },
       'allLabels': [],
       'balloon': {},
       'legend': {
@@ -62,6 +71,7 @@ export class SmoothedChartComponent implements OnChanges,OnInit {
       'titles': [
       ],
       'dataProvider':changes.data.currentValue,
+      
     });
   }
 

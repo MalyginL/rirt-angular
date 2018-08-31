@@ -39,22 +39,10 @@ export class TaskPageComponent implements OnInit, OnDestroy {
   constructor(private AmCharts: AmChartsService, private repo: RepoService, private load: LoadService) {
   }
 
- 
-
-
-  getDataSource() {
-    this.load.load_task().subscribe(data => this.repo.tasks_tasks = data);
-
-    this.load.load_old_task().subscribe(data => this.repo.tasks_oldtasks = data);
-  }
-
   ngOnInit() {
-    this.getDataSource();
-    //this.timer = setInterval(() => this.getDataSource(), 5000);
   }
 
   ngOnDestroy() {
-    clearInterval(this.timer);
   }
 
 
