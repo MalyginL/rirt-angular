@@ -71,7 +71,7 @@ export class LoadService {
 
   load_GraphsPerChannel(device,channel,time,type){
     
-    return this.load('/malygin/getGraphsPerChannel/'+device+'/'+channel+'/'+time+type);
+    return this.load('/malygin/getGraphsPerChannel/'+device+'/'+"2"+'/'+time+type);
   }
   load_devices() {
     return this.load('/malygin/devices');
